@@ -46,10 +46,6 @@ function defineModel(name, attributes) {
     type: Sequelize.BIGINT,
     allowNull: false
   };
-  attrs.version = {
-    type: Sequelize.BIGINT,
-    allowNull: false
-  };
   // console.log('model defined for table: ' + name);
 
   return sequelize.define(name, attrs, {
@@ -64,10 +60,8 @@ function defineModel(name, attributes) {
           }
           obj.createdAt = now;
           obj.updatedAt = now;
-          obj.version = 0;
         } else {
           obj.updatedAt = Date.now();
-          obj.version++;
         }
       }
     }
