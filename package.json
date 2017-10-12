@@ -1,0 +1,25 @@
+{
+  "name": "weibt-server",
+  "version": "0.0.1",
+  "description": "hard to discribe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "btfrankenstein",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
+    "koa-views": "^6.1.1",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.4.2",
+    "node-uuid": "^1.4.8",
+    "sequelize": "^4.13.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
