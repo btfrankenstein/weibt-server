@@ -33,12 +33,6 @@ class LoginController {
       }
     });
 
-    // ctx.session.user = user.dataValues;
-    // const id = user.id;
-    // const email = user.email;
-    // const keep_user = 604800000; // 7天
-    // ctx.cookies.set('userid', id, { maxAge: keep_user, httpOnly: false });
-    // ctx.cookies.set('userEmail', email, { maxAge: keep_user, httpOnly: false });
     ctx.body = {
       status: 200,
       msg: 'ok',

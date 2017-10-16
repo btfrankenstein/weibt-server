@@ -3,6 +3,7 @@ const cors = require('@koa/cors');
 const path = require('path');
 const routers = require('./routes/index');
 const session = require('koa-session');
+const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 
 // cookies
@@ -16,6 +17,7 @@ const CONFIG = {
 app.use(session(CONFIG, app));
 
 app.use(cors());
+app.use(bodyParser());
 app.use(routers.routes()).use(routers.allowedMethods());
 
 app.listen(8888);
