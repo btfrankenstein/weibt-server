@@ -1,5 +1,5 @@
 const models = require('../model');
-const User = models.feed;
+const Feed = models.feed;
 
 class FeedController {
 
@@ -7,7 +7,7 @@ class FeedController {
     const now = Date.now();
     console.log(ctx.request.body);
     try {
-      const user = await User.create({
+      const feed = await Feed.create({
         userId: ctx.request.body.userId,
         content: ctx.request.body.content,
         feedId: `${ctx.request.body.userId}${now}`,
@@ -24,6 +24,20 @@ class FeedController {
         msg: e,
       };
     }
+  }
+
+  async getFeed(ctx) {
+    const feed = await Feed.findAll({
+      where: {
+        userId: ctx.request.query.userId,
+      }
+    });
+
+    ctx.body = {
+      status: 200,
+      msg: 'ok',
+      data: feed,
+    };
   }
 
 }
