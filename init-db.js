@@ -1,6 +1,6 @@
 const model = require('./model');
 
-model.feed.sync().then(() => {
+model.sync().then(() => {
   console.log('sync done');
   process.exit(0);
 }).catch((e) => {

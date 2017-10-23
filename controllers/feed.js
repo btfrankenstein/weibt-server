@@ -29,9 +29,18 @@ class FeedController {
   async getFeed(ctx) {
     const feed = await Feed.findAll({
       where: {
-        userId: ctx.request.query.userId,
+        userId: ctx.request.header.token,
       }
     });
+
+    if (!ctx.request.header.token) {
+      ctx.body = {
+        status: 401,
+        msg: '用户不存在',
+      };
+
+      return false;
+    }
 
     ctx.body = {
       status: 200,
