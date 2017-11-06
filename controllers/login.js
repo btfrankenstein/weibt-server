@@ -15,7 +15,9 @@ class LoginController {
       ctx.body = {
         status: 200,
         msg: 'ok',
-        id: user.dataValues.id,
+        data: {
+          id: user.dataValues.id,
+        },
       };
       console.log(id);
     } catch(e) {
@@ -48,7 +50,9 @@ class LoginController {
         ctx.body = {
           status: 200,
           msg: 'ok',
-          userId: user[0].id,
+          data: {
+            token: user[0].id,
+          },
         };
       }
     } 

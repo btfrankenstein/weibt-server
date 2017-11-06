@@ -38,14 +38,15 @@ class FeedController {
         status: 401,
         msg: '用户不存在',
       };
-
       return false;
     }
 
     ctx.body = {
       status: 200,
       msg: 'ok',
-      data: feed,
+      data: {
+        feed,
+      },
     };
   }
 
