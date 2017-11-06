@@ -8,9 +8,9 @@ class FeedController {
     console.log(ctx.request.body);
     try {
       const feed = await Feed.create({
-        userId: ctx.request.body.userId,
+        userId: ctx.request.header.token,
         content: ctx.request.body.content,
-        feedId: `${ctx.request.body.userId}${now}`,
+        feedId: `${ctx.request.header.token}${now}`,
         createdAt: now,
         updatedAt: now,
       });

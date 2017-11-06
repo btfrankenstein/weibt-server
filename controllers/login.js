@@ -33,11 +33,26 @@ class LoginController {
       }
     });
 
-    ctx.body = {
-      status: 200,
-      msg: 'ok',
-      userId: user[0].id,
-    };
+    if (user.length === 0) {
+      ctx.body = {
+        status: 400,
+        msg: '用户不存在',
+      };
+    } else {
+      if (user[0].password !== ctx.query.password) {
+        ctx.body = {
+          status: 400,
+          msg: '密码错误',
+        };
+      } else {
+        ctx.body = {
+          status: 200,
+          msg: 'ok',
+          userId: user[0].id,
+        };
+      }
+    } 
+
 
   }
 
