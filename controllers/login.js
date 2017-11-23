@@ -1,5 +1,6 @@
 const models = require('../model');
 const User = models.user;
+const jwt = require('jsonwebtoken');
 
 class LoginController {
 
@@ -34,16 +35,20 @@ class LoginController {
         email: ctx.query.email,
       }
     });
+    const userToken = {
+      email: ctx.query.email,
+    };
+    const token = jwt.sign(userToken, 'jwtdemo', {expiresIn: '1h'});
 
     if (user.length === 0) {
       ctx.body = {
-        status: 400,
+        status: 401.1,
         msg: '用户不存在',
       };
     } else {
       if (user[0].password !== ctx.query.password) {
         ctx.body = {
-          status: 400,
+          status: 401.1,
           msg: '密码错误',
         };
       } else {
@@ -52,12 +57,11 @@ class LoginController {
           msg: 'ok',
           data: {
             token: user[0].id,
+            jwt: token,
           },
         };
       }
     } 
-
-
   }
 
 }

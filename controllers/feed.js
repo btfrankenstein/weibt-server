@@ -1,5 +1,6 @@
 const models = require('../model');
 const Feed = models.feed;
+const jwt = require('jsonwebtoken');
 
 class FeedController {
 
@@ -32,20 +33,21 @@ class FeedController {
         userId: ctx.request.header.token,
       }
     });
+    const user = ctx.user;
 
-    if (!ctx.request.header.token) {
-      ctx.body = {
-        status: 401,
-        msg: '用户不存在',
-      };
-      return false;
-    }
+    // if (!ctx.request.header.token) {
+    //   ctx.body = {
+    //     status: 401,
+    //     msg: '用户不存在',
+    //   };
+    //   return false;
+    // }
 
     ctx.body = {
       status: 200,
       msg: 'ok',
       data: {
-        feed,
+        user,
       },
     };
   }

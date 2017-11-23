@@ -12,8 +12,10 @@
   "dependencies": {
     "@koa/cors": "2",
     "ejs": "^2.5.7",
+    "jsonwebtoken": "^8.1.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
+    "koa-jwt": "^3.2.2",
     "koa-router": "^7.2.1",
     "koa-session": "^5.5.0",
     "koa-views": "^6.1.1",
