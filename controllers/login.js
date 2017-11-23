@@ -37,6 +37,7 @@ class LoginController {
     });
     const userToken = {
       email: ctx.query.email,
+      userId: user[0].id,
     };
     const token = jwt.sign(userToken, 'jwtdemo', {expiresIn: '1h'});
 
@@ -56,8 +57,7 @@ class LoginController {
           status: 200,
           msg: 'ok',
           data: {
-            token: user[0].id,
-            jwt: token,
+            token,
           },
         };
       }

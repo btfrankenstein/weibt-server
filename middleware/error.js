@@ -13,9 +13,9 @@ module.exports = function () {
         let payload
         try {
           payload = await verify(token, 'jwtdemo')  // 解密payload，获取用户名和ID
-          console.log(payload);
           ctx.user = {
             email: payload.email,
+            userId: payload.userId,
           }
         } catch (err) {
           console.log('token verify fail: ', err)

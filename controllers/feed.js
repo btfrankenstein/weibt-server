@@ -30,10 +30,10 @@ class FeedController {
   async getFeed(ctx) {
     const feed = await Feed.findAll({
       where: {
-        userId: ctx.request.header.token,
+        userId: ctx.user.userId,
       }
     });
-    const user = ctx.user;
+    // const user = ctx.user;
 
     // if (!ctx.request.header.token) {
     //   ctx.body = {
@@ -47,7 +47,7 @@ class FeedController {
       status: 200,
       msg: 'ok',
       data: {
-        user,
+        feed,
       },
     };
   }
